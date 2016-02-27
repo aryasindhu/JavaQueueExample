@@ -1,0 +1,21 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile 'org.apache.kafka:kafka-clients:0.9.0.0'
+	compile 'org.slf4j:slf4j-api:1.7.16'
+	testCompile 'org.uncommons:reportng:1.1.1'
+	testCompile 'org.testng:testng:5.11:jdk15@jar'
+}
+
+test {
+  useTestNG()
+  options {
+    listeners << 'org.uncommons.reportng.HTMLReporter'
+    listeners << 'org.uncommons.reportng.JUnitXMLReporter'
+  }
+}
